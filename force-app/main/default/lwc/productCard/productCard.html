@@ -1,0 +1,86 @@
+<!--
+  @File Name          : productCard.html
+  @Description        : 
+  @Author             : Saloni Jain
+  @Group              : 
+  @Last Modified By   : Saloni Jain
+  @Last Modified On   : 27/5/2020, 6:25:52 pm
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    24/5/2020   Saloni Jain     Initial Version
+-->
+<template>
+    <article class="cards">
+        <div class="slds-p-horizontal_small">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_3-of-12">
+                    <span>
+                        <div>
+                            <div style="height: 50px; width: 50px; border: ridge; margin: 0 0 0 5px;"></div>
+                            <p style="text-align: center; font-size: x-small;">UOM: {productdata.UOM}</p>
+                        </div>
+                    </span>
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <span>
+                        <b>{productdata.ProductName}</b>
+                        <template if:true={pipe1}>
+                            <template if:true={pipe2}>
+                                <p>{productdata.Brand}<span
+                                        style="color: rgb(184, 179, 179);">{symbol}</span>{productdata.Color}<span
+                                        style="color: rgb(184, 179, 179);">{symbol}</span>{productdata.Size}</p>
+                            </template>
+                            <template if:false={pipe2}>
+                                <p>{productdata.Brand}<span
+                                        style="color: rgb(184, 179, 179);">{symbol}</span>{productdata.Color}</p>
+                            </template>
+                        </template>
+                        <template if:false={pipe1}>
+                            <template if:true={pipe2}>
+                                <p>{productdata.Brand}<span
+                                        style="color: rgb(184, 179, 179);">{symbol}</span>{productdata.Size}</p>
+                            </template>
+                            <template if:false={pipe2}>
+                                <p>{productdata.Brand}</p>
+                            </template>
+                        </template>
+                        <span>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <span>₹{productdata.UnitPrice}</span>
+                                </div>
+                                <div class="slds-col">
+                                    <span>
+                                        <template if:true={productdata.StockStatus}>
+                                            <div
+                                                style="border-radius: 50%; color: white; background-color: green; width: 20px; height: 20px; text-align: center;">
+                                                S</div>
+                                        </template>
+                                    </span>
+                                </div>
+                                <div class="slds-col">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </span>
+                    </span>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <span>
+                        <template if:true={tags}>
+                            <template for:each={tags} for:item="tag">
+                                <div key={tag} class="tag">{tag}</div>
+                                <!-- <lightning-badge key={tag} label={tag}></lightning-badge> -->
+                            </template>
+                        </template>
+                    </span>
+                </div>
+            </div>
+            <input type="number" class="text-line" onchange={getQuantity} />
+            <!-- <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-6">
+                </div>
+            </div> -->
+        </div>
+    </article>
+</template>

@@ -1,0 +1,104 @@
+<!--
+  @File Name          : customerDetail.html
+  @Description        : 
+  @Author             : Saloni Jain
+  @Group              : 
+  @Last Modified By   : Saloni Jain
+  @Last Modified On   : 26/5/2020, 5:46:51 pm
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    25/5/2020   Saloni Jain     Initial Version
+-->
+<template>
+  <div style="height: 5vh;">
+    <div class="slds-grid slds-gutters" style="text-align: center; margin: 0 10px 0 10px;">
+      <div class="slds-col">
+        <span>
+          <img src={Whatsapp} height="45px" width="45px" style="border-radius: 50%;">
+        </span>
+      </div>
+      <div class="slds-col">
+        <span>
+          <img src={Phone} height="45px" width="45px" style="border-radius: 50%;">
+        </span>
+      </div>
+      <div class="slds-col">
+        <span>
+          <img src={Location} height="45px" width="45px" style="border-radius: 50%;">
+        </span>
+      </div>
+      <div class="slds-col">
+        <span>
+          <img src={Direction} height="45px" width="45px" style="border-radius: 50%;">
+        </span>
+      </div>
+    </div>
+  </div>
+  <div style="height: 90vh;">
+    <template if:true={account}>
+      <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-p-around_small slds-m-around_x-small">
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Name</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.Name}</label>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Owner</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.OwnerName}</label>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Owner Mobile</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.OwnerPhone}</label>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Selected Beat</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.Beat}</label>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Area</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.Area}</label>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Outlet Type</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.OutletType}</label>
+        </div>
+
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Dealer Type</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.DealerType}</label>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Mobile</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.Mobile}</label>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Outlet Category</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.OutletCategory}</label>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-around_small">
+          <label>Balance</label>
+        </div>
+        <div class="slds-size_1-of-2 col2 slds-p-around_small">
+          <label>{account.Balance}</label>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

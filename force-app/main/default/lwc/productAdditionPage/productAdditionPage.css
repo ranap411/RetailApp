@@ -1,0 +1,9 @@
+.header{
+    border-radius: 20px;
+    background-color: gray;
+}
+
+.container{
+    height: 30vh;
+    overflow: scroll;
+}

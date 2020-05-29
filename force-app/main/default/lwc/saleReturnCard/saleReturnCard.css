@@ -1,0 +1,15 @@
+.text-line {
+    background-color: transparent;
+    color: #3b3b3b;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #b1adad 1px;
+    padding: 3px 10px;
+    width: 100%;
+}
+.cards {
+    font-size: small;
+}

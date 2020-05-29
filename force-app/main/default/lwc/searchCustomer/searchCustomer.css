@@ -1,0 +1,144 @@
+/* @media only screen and (max-width: 600px) {
+.newIcon{
+    margin-top: 24px;
+    margin-left: -50px;
+    position: absolute;
+    height: 34px;
+    width: 33px;
+    color: #f3eded;
+    box-shadow: 5px 3px 4px 0 #5d5757;
+}
+.accountCards{
+    border-radius: 5%;
+}
+
+
+} */
+
+.newIcon{
+margin-top: 16px;
+margin-left: -50px;
+color: #f3eded;
+box-shadow: 5px 3px 4px 0 #5d5757;
+}
+.accountCards{
+border-radius: 5%;
+}
+ .searchBar{
+height: 40px;
+border-radius: 30px;
+width: 100%;
+padding: 10px;
+}
+
+.search-box,.close-icon,.search-wrapper {
+padding: 10px;
+}
+.search-wrapper {
+width: 500px;
+margin: auto;
+margin-top: 50px;
+}
+.search-box {
+width: 100%;
+margin-top: 14px;
+border: 1px solid #ccc;
+outline: 0;
+border-radius: 30px;
+white-space: pre;
+}
+.search-box:focus {
+box-shadow: 0 0 15px 5px #918a86;
+border: 2px solid #bebede;
+}
+.close-icon {
+border:1px solid transparent;
+background-color: transparent;
+display: inline-block;
+vertical-align: middle;
+outline: 0;
+cursor: pointer;
+}
+.close-icon:after {
+content: "X";
+display: block;
+width: 15px;
+height: 15px;
+position: absolute;
+background-color:gray;
+z-index:1;
+right: 35px;
+bottom: 0;
+right: 80px;
+top: 115px;
+border-radius: 50%;
+text-align: center;
+color: white;
+font-weight: normal;
+font-size: 12px;
+box-shadow: 3px 4px 7px 1px #1c1d1edb;
+cursor: pointer;
+}
+.search-box:not(:valid) ~ .close-icon {
+display: none;
+} 
+.customerCards{
+padding-bottom: 40px;
+    height: fit-content;
+    background-color: #c3bfbf;
+}
+
+.mainSearchCustomer{
+ background-color: #c3bfbf;
+}
+/* .search-box,.close-icon,.search-wrapper {
+	position: relative;
+	padding: 10px;
+}
+.search-wrapper {
+	width: 500px;
+	margin: auto;
+	margin-top: 80px;
+}
+.search-box {
+	width: 80%;
+	border: 1px solid #ccc;
+  outline: 0;
+  border-radius: 15px;
+}
+.search-box:focus {
+	box-shadow: 0 0 15px 5px #b0e0ee;
+	border: 2px solid #bebede;
+}
+.close-icon {
+	border:1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+}
+.close-icon:after {
+	content: "X";
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background-color: gray;
+	z-index:1;
+	right: 90px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	padding: 2px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	font-weight: normal;
+	font-size: 12px;
+	box-shadow: 0 0 2px #E50F0F;
+	cursor: pointer;
+}
+.search-box:not(:valid) ~ .close-icon {
+	display: none;
+} */

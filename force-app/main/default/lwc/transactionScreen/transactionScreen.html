@@ -1,0 +1,77 @@
+<!--
+  @File Name          : transactionScreen.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/24/2020, 6:07:33 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/24/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <div class="mainContainer">
+        <div class="header">
+            05 Dec 2019, Sunday
+        </div>
+        
+        <div class="accountNameHeader">
+            <p>Rahul</p>
+            <p>Delhi,India</p>
+        </div>
+        <p style="font-weight: 900;font-size: small;text-align:center">Sales</p>
+        <div class="orderDetails">
+            <p>Delivered - Payment Id 60</p>
+            <p>Bill No 48, Order id 65</p>
+        </div>
+        <div class="orderDetails">
+            <div class="slds-grid slds-wrap" style="padding-top: 5px;font-weight: 900;">
+                <div class="slds-col slds-size_4-of-12">
+                    <span>SKU</span>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <span>Unit Price</span>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <span>Unit</span>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <span>Amount</span>
+                </div>
+            </div>
+            <template for:each={orders} for:item="order">
+                <div class="card visitCards" key={order.id}>
+                    <div class="slds-grid slds-wrap"
+                        style="padding-top: 5px;padding-bottom: 5px; border-bottom: .5px solid gray;">
+                        <div class="slds-col slds-size_4-of-12">
+                            <span>{order.Name}</span>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12">
+                            <span>{order.UnitPrice}</span>
+                        </div>
+                        <div class="slds-col slds-size_2-of-12">
+                            <span>{order.Unit}</span>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12">
+                            <span>{order.Amount}</span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <div class="slds-grid slds-wrap" style="padding-top: 5px;font-weight: 900;">
+                <div class="slds-col slds-size_4-of-12">
+                    <span>Total</span>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <span></span>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <span>17</span>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <span>13000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

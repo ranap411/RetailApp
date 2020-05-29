@@ -1,0 +1,66 @@
+<!--
+  @File Name          : homeScreen.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/27/2020, 6:48:05 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/14/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <lightning-card class="mainContainer">
+        <template if:true={homeScreen}>
+            <div class="subContainer">
+                <div class="box">
+                    <span class="leftSpan">
+                        <div class="square box1" onclick={clickSearchCustomer}>
+                            <img src="https://cdn0.iconfinder.com/data/icons/education-2-27/32/user_staff_person_man_profile_boss_circle-512.png"/>
+                            <p class="text">Customer</p>
+                        </div>
+                    </span>
+                    <span class="rightSpan">
+                        <div class="square box2" onclick={clickBox}>
+                            <img src="https://cdn.onlinewebfonts.com/svg/img_419701.png"/>
+                            <p class="text">Attendance</p>
+                        </div>
+                    </span>
+                </div>
+                <div class="box">
+                    <span class="leftSpan">
+                        <div class="square box3" onclick={clickShowTour}>
+                            <img src="https://www.freepngimg.com/thumb/map/89592-map-area-icons-computer-location-line.png"/>
+                            <p class="text">Tour Visit</p>
+                        </div>
+                    </span>
+                    <span class="rightSpan">
+                        <div class="square box4" onclick={clickAddCustomer}>
+                            <img src="https://pngimage.net/wp-content/uploads/2018/05/add-customer-icon-png-6.png"/>
+                            <p class="text">Add Customer</p>
+                        </div>
+                    </span>
+                </div>
+                
+                <div class="buttonDiv">
+                    <button class="clicky" onclick={clickAttendance}>Log Attendance</button>
+                </div>
+            </div>
+        </template>
+        <template if:true={searchCustomer}>
+            <c-search-customer></c-search-customer>
+        </template>
+        <template if:true={attendanceScreen}>
+            <c-attendance></c-attendance>
+        </template>
+        <template if:true={attendanceCalender}>
+            <c-full-calendar-js></c-full-calendar-js>
+        </template>
+        <template if:true={showTour}>
+            <c-tour-visit></c-tour-visit>
+        </template>
+        <template if:true={newCustomer}>
+            <c-new-customer></c-new-customer>
+        </template>
+    </lightning-card>
+</template>

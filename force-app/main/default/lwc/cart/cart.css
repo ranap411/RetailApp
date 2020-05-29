@@ -1,0 +1,27 @@
+.mainContainer{
+	margin: 10px;
+}
+
+.checkBox{
+	border-bottom: 1px solid gray;
+    padding: 10px;
+}
+
+.productDetailsHeader{
+	margin: 10px;
+	color: rgb(230, 94, 14);
+    font-weight: 900;
+   padding-left: 10px;
+}
+
+.productDetailsBody{
+	margin: 5px;
+	border-bottom: 1px solid gray;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+.orderDetails{
+	text-align: center;
+    padding: 5px;
+}

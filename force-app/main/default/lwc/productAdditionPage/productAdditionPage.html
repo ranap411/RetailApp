@@ -1,0 +1,65 @@
+<template>
+
+    <template if:true={noData}>
+    <div class="container">
+      <div class="slds-m-around_x-small">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Opportunity Name">S.No</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Account Name">Name</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Close Date">Quantity</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Stage">Price</div>
+                </th>
+                <th class="" scope="col">
+                <div class="slds-truncate" title="Stage">Description</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Confidence">Action</div>
+                </th>
+                </tr>
+            </thead>
+            <tbody>
+            <template for:each={productData} for:item="item">
+                <tr class="slds-hint-parent" key={item}>
+                <td data-label="Account Name">
+                    <div class="slds-truncate" title="Cloudhub">{item.sr}</div>
+                </td>
+                <td data-label="Close Date">
+                    <div class="slds-truncate" title="4/14/2015">{item.Name}</div>
+                </td>
+                <td data-label="Prospecting">
+                <input type="number" name="input1" class="slds-input slds-truncate" value={item.quantity}></input>
+                </td>
+                <td data-label="Confidence">
+                <input type="number" name="input1" class="slds-input slds-truncate" value={item.price}></input>
+                </td>
+                <td data-label="Confidence" style="padding-top: -2px">
+                    <input type="text" class="slds-input slds-truncate" placeholder="Description" value={item.Description}></input>
+                </td>
+                <td data-label="Action">
+                    <lightning-button variant="destructive" label="Remove" title="Primary action" data-id={item.Id} onclick={handleRemove} class="slds-m-left_x-small"></lightning-button>
+                </td>
+                </tr>
+            </template>
+            </tbody>
+            </table>
+        </div>
+    </div>
+    </template>
+    
+    <template if:false={noData}>
+        <center>
+            <span>No Product Selected</span>
+        </center>
+    </template>
+    
+    <c-product-listing-page></c-product-listing-page>
+</template>

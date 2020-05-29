@@ -1,0 +1,133 @@
+<!--
+  @File Name          : attendance.html
+  @Description        : 
+  @Author             : Saloni Jain
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/24/2020, 7:53:15 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    14/5/2020   Saloni Jain     Initial Version
+-->
+<template>
+    <div class="container">
+        <div class="header">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_2-of-12" onclick={homeScreen}>
+                    <span><img src="https://cdn4.iconfinder.com/data/icons/controls-add-on-flat/48/Contols_-_Add_On-29-512.png"></span>
+                </div>
+                <div class="slds-col slds-size_5-of-12 slds-m-top_small">
+                    <span style="float: left; color: white; font-size: medium; font-style: inherit;">Attendance</span>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div>
+                <div class="slds-grid slds-gutters slds-p-left_small" style="margin-bottom: 0px;">
+                    <div class="slds-col slds-size_4-of-12 slds-p-top_medium ">
+                        <span>User Profile</span>
+                      </div>
+                      <div class="slds-col slds-size_2-of-6 slds-p-top_medium slds-p-right_xx-large" style="Margin-right: 50%;">
+                        <span><lightning-badge label={StatusVal}></lightning-badge></span>
+                      </div>
+               
+                </div>
+                <div class="slds-grid" style="margin-top: -15px;">
+                    <div class="slds-col slds-size_6-of-12">
+                        <template if:true={Imageval}>
+                                   <lightning-file-upload
+                                           name="fileUploader"
+                                           accept={acceptedFormats}
+                                           record-id={recordId}
+                                           onuploadfinished={handleUploadFinished}
+                                           multiple
+                                           style="padding-left: 12px;max-width: width 200px;">
+                                   </lightning-file-upload>
+                       </template>
+                   </div>
+                       <!--<lightning-badge label={StatusVal} style="padding-bottom: 20px;"></lightning-badge> -->
+                   <div class="slds-col slds-size_6-of-12 slds-p-around_xx-small" style="padding-top: 40px;">
+                       <span>
+                           <b>{username}<br>User Id: 2</b>
+                           <b></b>
+                       </span>
+                   </div>
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters slds-p-around_small">
+                <div class="slds-col slds-size_1-of-3">
+                    <span>Address</span>
+                </div>
+                <div class="slds-col slds-size_2-of-3" style="float: right;">
+                    <span>London</span>
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters slds-p-around_small">
+                <div class="slds-col slds-size_1-of-3">
+                    <span>Phone</span>
+                </div>
+                <div class="slds-col slds-size_2-of-3" style="float: right;">
+                    <span>{phone}</span>
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters slds-p-around_small">
+                <div class="slds-col slds-size_1-of-3">
+                    <span>Email</span>
+                </div>
+                <div class="slds-col slds-size_2-of-3" style="float: right;">
+                    <span>{email}</span>
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters slds-p-around_small">
+                <div class="slds-col slds-size_1-of-3">
+                    <span>Designation</span>
+                </div>
+                <div class="slds-col slds-size_2-of-3" style="float: right;">
+                    <span>{designation}</span>
+                </div>
+            </div>
+            <template if:true={CheckIn}>
+                <div class="slds-grid slds-gutters slds-p-around_small">
+                    <div class="slds-col slds-size_1-of-3">
+                        <span>Check In Time</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-3" style="float: right;">
+                        <span>{ShowClockInTime}</span>
+                    </div>
+                </div>
+            </template>
+            <template if:true={CheckOut}>
+                <div class="slds-grid slds-gutters slds-p-around_small">
+                    <div class="slds-col slds-size_1-of-3">
+                        <span>Check Out Time</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-3" style="float: right;">
+                        <span>{ShowClockOutTime}</span>
+                    </div>
+                </div>
+            </template>    
+        </div>
+
+        <template if:true={IsCheckout}>
+            <div>
+                <center><button class="" style="Margin-bottom:-2px;min-height:40px;min-width:100%;background-color:darkred;color:white;font-size:xx-large 20px;;border:white;" data-id="clockout" onclick={markAttendance} >Clock Out</button></center>
+            </div>
+                   
+        </template>
+        <template if:true={isButtonDisabled}>
+            <table>
+                <tr>
+                    <td>
+                        <button style="background-color: rgb(130, 163, 91);min-width: 100%;padding: top 50px;height:50px;color:white;" data-id="present" onclick={markAttendance}>Present</button>
+                    </td>
+                    <td>
+                        <button style="background-color: orange;min-width: 100%;padding: top 50px;height:50px;color:white;" data-id="absent" onclick={markAttendance}>Absent</button>
+                       
+                    </td>
+                    
+                </tr>
+            </table>
+        </template>    
+
+    </div>
+</template>

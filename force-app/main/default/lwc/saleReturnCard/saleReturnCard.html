@@ -1,0 +1,65 @@
+<!--
+  @File Name          : saleReturnCard.html
+  @Description        : 
+  @Author             : Saloni Jain
+  @Group              : 
+  @Last Modified By   : Saloni Jain
+  @Last Modified On   : 24/5/2020, 2:09:37 pm
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    24/5/2020   Saloni Jain     Initial Version
+-->
+<template>
+    <article class="cards">
+        <div class="slds-p-horizontal_small">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <div>
+                        <div style="height: 50px; width: 50px; border: ridge; margin: 0 0 5px 0;"></div>
+                        <p style="text-align: center;">INR: {productdata.UnitPrice}</p>
+                    </div>
+                </div>
+                <div class="slds-media_body" style="margin-left: 10px;">
+                    <p>{productdata.ProductName}</p>
+                    <template if:true={pipe1}>
+                        <template if:true={pipe2}>
+                            <p>{productdata.Brand}{symbol}{productdata.Color}{symbol}{productdata.Size}</p>
+                        </template>
+                        <template if:false={pipe2}>
+                            <p>{productdata.Brand}{symbol}{productdata.Color}</p>
+                        </template>
+                    </template>
+                    <template if:false={pipe1}>
+                        <template if:true={pipe2}>
+                            <p>{productdata.Brand}{symbol}{productdata.Size}</p>
+                        </template>
+                        <template if:false={pipe2}>
+                            <p>{productdata.Brand}</p>
+                        </template>
+                    </template>
+                </div>
+            </div>
+            <input type="number" class="text-line" />
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-6">
+                    <span>
+                        <template if:true={productdata.StockStatus}>
+                            <div
+                                style="border-radius: 50%; color: white; background-color: green; width: 20px; height: 20px; text-align: center; margin-top: 5px;">
+                                S</div>
+                        </template>
+                    </span>
+                </div>
+                <div class="slds-col slds-size_5-of-6" style="float: right;">
+                    <span>
+                        <template if:true={tags}>
+                            <template for:each={tags} for:item="tag">
+                                <lightning-badge key={tag} label={tag} style="margin-top: 5px;"></lightning-badge>
+                            </template>
+                        </template>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </article>
+</template>

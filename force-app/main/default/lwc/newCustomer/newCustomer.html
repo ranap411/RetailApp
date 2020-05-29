@@ -1,0 +1,50 @@
+<!--
+  @File Name          : newCustomer.html
+  @Description        : 
+  @Author             : Saloni Jain
+  @Group              : 
+  @Last Modified By   : Saloni Jain
+  @Last Modified On   : 26/5/2020, 3:24:37 am
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    26/5/2020   Saloni Jain     Initial Version
+-->
+<template>
+    <div class="mainNewCustomer">
+        <div class="slds-m-around_medium newCustomerMain">
+            <lightning-input label="Name" value={Name} onchange={handleChange} data-item="Name"
+                class="lightningInput" required></lightning-input>
+            <br>
+            <!-- <lightning-input label="Last Name" onchange={handleChange} data-item="lastName" class="lightningInput">
+            </lightning-input>
+            <br> -->
+            <!-- <lightning-combobox name="dealertype" label="Dealer Type" value={value} data-item="dealertype"
+                placeholder="Select Source" options={options} onchange={handleChange}>
+            </lightning-combobox>
+            <br> -->
+            <lightning-input label="Mobile" type="tel" value={mobile} onchange={handleChange} data-item="mobile"
+                maxlength="10" message-when-pattern-mismatch="Should be 10 digit" pattern="^\d{10}$"
+                class="lightningInput" required></lightning-input>
+            <br>
+            <!-- <lightning-input label="Email" type="email" onchange={handleChange} data-item="email"
+                class="lightningInput"></lightning-input>
+            <br> -->
+            <div class="footer">
+                <div class="slds-grid slds-wrap" style="padding-bottom:15px;">
+                    <div class="slds-col slds-size_6-of-12">
+                        <span>
+                            <button class="slds-button slds-button_neutral button3" onclick={cancelAccount}
+                                style="width: 50%;">Cancel</button>
+                        </span>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <span>
+                            <button class="slds-button slds-button_brand button2" onclick={createAccount}
+                                style="width: 50%;">Save</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

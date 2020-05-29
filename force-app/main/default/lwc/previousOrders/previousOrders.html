@@ -1,0 +1,60 @@
+<!--
+  @File Name          : previousOrders.html
+  @Description        : 
+  @Author             : Saloni Jain
+  @Group              : 
+  @Last Modified By   : Saloni Jain
+  @Last Modified On   : 22/5/2020, 4:45:05 am
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    21/5/2020   Saloni Jain     Initial Version
+-->
+<template>
+    <div class="container">
+        <template if:false={noOrders}>
+            <div class="slds-grid slds-m-top_x-small slds-m-bottom_x-small">
+                <div class="slds-col slds-size_1-of-4">
+                    <span style="font-weight: bold; padding-left:10px;">Order No.</span>
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    <span style="font-weight: bold;">Order Date</span>
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    <span style="font-weight: bold;">Total Amount</span>
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    <span style="font-weight: bold;">Challan No.</span>
+                </div>
+            </div>
+            <template if:false={spinner}>
+                <lightning-layout multiple-rows class="layout">
+                    <template for:each={previousOrderList} for:item="orders">
+                        <lightning-layout-item key={orders.Id} size="12" small-device-size="6" medium-device-size="6"
+                            large-device-size="3" class="slds-m-top_small layout-item">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-4">
+                                        <span style="padding-left: 10px;">{orders.OrderNo}</span>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4">
+                                        <span>{orders.OrderDate}</span>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4">
+                                        <span>{orders.TotalAmount}</span>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4">
+                                        <span>{orders.challanNo}</span>
+                                    </div>
+                                </div>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+            <template if:true={spinner}>
+                <c-spinner></c-spinner>
+            </template>
+        </template>
+        <template if:true={noOrders}>
+            <center>No orders found</center>
+        </template>
+    </div>
+</template>

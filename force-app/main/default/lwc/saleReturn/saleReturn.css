@@ -1,0 +1,47 @@
+.container {
+    background-color: white;
+    min-height: 100vh;
+  }
+  
+  .button1 {
+    border: #27aee6 solid 1px;
+    background-color: #27aee6;
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 2px;
+  }
+  
+  .button2 {
+    border: #27aee6 solid 1px;
+    color: #27aee6;
+    font-size: 14px;
+    border-radius: 2px;
+    padding: 10px;
+  }
+  
+  .button3 {
+    border: #27aee6 solid 1px;
+    background-color: #27aee6;
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 2px;
+  }
+  
+  .top {
+    height: 15vh;
+  }
+  
+  .bottom {
+    height: 85vh;
+  }
+  
+  .float {
+    position: fixed;
+    bottom: 10vh;
+    right: 40px;
+    color: #FFF;
+    border-radius: 50px;
+    box-shadow: 2px 2px 3px #999;
+  }

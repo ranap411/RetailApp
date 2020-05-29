@@ -1,0 +1,161 @@
+<template>
+    <div style="background-color: white; height:120vh;overflow:scroll">
+        <div class="slds-page-header">
+            <div class="slds-page-header__row">
+              <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                  <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-opportunity" title="opportunity">
+                        <lightning-icon icon-name="standard:opportunity" alternative-text="Approved" title="Approved"></lightning-icon>
+                      <span class="slds-assistive-text">Enquiry</span>
+                    </span>
+                  </div>
+                  <div class="slds-media__body">
+                    <div class="slds-page-header__name">
+                      <div class="slds-page-header__name-title">
+                        <h1>
+                          <span class="slds-page-header__title slds-truncate" title="Rohde Corp - 80,000 Widgets">Enquiry</span>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                <button type="button" class="slds-button slds-button_neutral" if:false={mainScreen} onclick={handleBack}>Back</button>
+                <button type="button" class="slds-button slds-button_neutral" if:true={mainScreen} onclick={navigateToAccountListView}>Cancel</button>
+                <button type="button" class="slds-button slds-button_brand" if:true={mainScreen} onclick={handleNext}>Next</button>
+                <button type="button" class="slds-button slds-button_brand" if:false={mainScreen} onclick={handleSave}>Save</button>
+
+            </div>
+          </div>
+
+        <template if:true={mainScreen}>
+            <div class="slds-section slds-is-open slds-p-around_xx-small" if:false={recordId}>
+                <h3 class="slds-section__title slds-theme_shade">
+                  <span class="slds-truncate slds-p-horizontal_small slds-text-align_center" title="Section Title">Enquiry</span>
+                </h3>
+                <div aria-hidden="false" class="slds-section__content">
+                  <div class="slds-p-around_xx-small">
+                    <lightning-radio-group name="radioGroup"
+                    label="Select Option"
+                    options={options}
+                    variant="label-inline"
+                    value={value}
+                    type="radio" onchange={newAccount}></lightning-radio-group>
+                  </div>
+                </div>
+              </div>
+    
+            <template if:true={detailSection}>
+                <div class="slds-section slds-is-open slds-p-around_xx-small">
+                    <h3 class="slds-section__title slds-theme_shade">
+                    <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Customer Detail</span>
+                    </h3>
+                    <div aria-hidden="false" class="slds-section__content">
+                    <template if:true={isExistingAccount}>
+                        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <c-custom-lookup class="mandate" field-label="Select Account" child-object-api-name='Enquiry__c'
+                                    target-field-api-name='Account__c' onvalueselected={handleValueSelcted} message-when-value-missing="Please fill the value" required></c-custom-lookup>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <c-custom-lookup class="mandate" field-label="Select Contact" child-object-api-name='Enquiry__c'
+                                    target-field-api-name='Contact__c' onvalueselected={handleContactSelected} message-when-value-missing="Please fill the value" required></c-custom-lookup>
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={isNewAccount}>
+                        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input class="mandate" type="text" label="Company Name" name="cName" value={customerDetail.Name} onchange={handleCustomerDetails} message-when-value-missing="Please fill the value" required></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input class="mandate" type="text" label="Contact FirstName" name="fName" value={customerDetail.FirstName} onchange={handleCustomerDetails} message-when-value-missing="Please fill the value" required></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input type="text" label="Contact Phone" name="phone" value={customerDetail.Phone} onchange={handleCustomerDetails}></lightning-input>
+                              </div>
+                              <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input class="mandate" type="text" label="Contact LastName" name="lName" value={customerDetail.LastName} onchange={handleCustomerDetails} message-when-value-missing="Please fill the value" required></lightning-input>
+                              </div>
+                              <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input type="text" label="Contact Designation" name="designation" value={customerDetail.Designation} onchange={handleCustomerDetails}></lightning-input>
+                              </div>
+                              <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input type="text" label="Contact Email" name="email" value={customerDetail.Email} onchange={handleCustomerDetails}></lightning-input>
+                              </div>
+                        </div>
+                    </template>
+                    </div>
+                </div>
+    
+                <div class="slds-section slds-is-open slds-p-around_xx-small">
+                    <h3 class="slds-section__title slds-theme_shade">
+                      <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Address</span>
+                    </h3>
+                    <div aria-hidden="false" class="slds-section__content">
+                        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input class="Address"  type="Text" label="Billing Street" name="bStreet" tabindex="-1" value={billingAddress.Street} onchange={handleAddress} message-when-value-missing="Please fill the value" required ></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input type="Text" label="Shipping Street" name="sStreet" tabindex="-1" value={shippingAddress.Street} onchange={handleAddress}></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input class="Address"  type="Text" label="Billing City" name="bCity" tabindex="-1" value={billingAddress.City} onchange={handleAddress} message-when-value-missing="Please fill the value" required></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input type="Text" name="sCity" label="Shipping City" tabindex="-1" value={shippingAddress.City} onchange={handleAddress} ></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input class="Address"  type="Text" name="bState" label="Billing State" tabindex="-1" value={billingAddress.State} onchange={handleAddress} message-when-value-missing="Please fill the value" required></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input type="Text" name="sState" label="Shipping State" tabindex="-1" value={shippingAddress.State} onchange={handleAddress}></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input class="Address"  type="Text" name="bCode" label="Billing PostalCode" tabindex="-1" value={billingAddress.PostalCode} onchange={handleAddress} message-when-value-missing="Please fill the value" required></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input type="Text" name="sCode" label="Shipping PostalCode" tabindex="-1" value={shippingAddress.PostalCode} onchange={handleAddress}></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input class="Address"  type="Text" name="bCountry" label="Billing Country" tabindex="-1" value={billingAddress.Country} onchange={handleAddress} message-when-value-missing="Please fill the value" required></lightning-input>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-around_xx-small">
+                                <lightning-input type="Text" name="sCountry" label="Shipping Country" tabindex="-1" value={shippingAddress.Country} onchange={handleAddress}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+    
+                  <div class="slds-section slds-is-open slds-p-around_xx-small">
+                    <h3 class="slds-section__title slds-theme_shade">
+                      <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Enquiry Details</span>
+                    </h3>
+                    <div aria-hidden="false" class="slds-section__content">
+                        <lightning-input-rich-text
+                        value={myVal}>
+                        </lightning-input-rich-text>
+                    </div>
+                  </div>
+    
+            </template>
+        </template>
+       
+        <template if:false={mainScreen}>
+            <c-product-addition-page></c-product-addition-page>
+        </template>
+    </div>
+    <div class="slds-docked-form-footer">
+        <button type="button" class="slds-button slds-button_neutral" if:false={mainScreen} onclick={handleBack}>Back</button>
+        <button type="button" class="slds-button slds-button_neutral" if:true={mainScreen} onclick={navigateToAccountListView}>Cancel</button>
+        <button type="button" class="slds-button slds-button_brand" if:true={mainScreen} onclick={handleNext}>Next</button>
+        <button type="button" class="slds-button slds-button_brand" if:false={mainScreen} onclick={handleSave}>Save</button>
+    </div>
+
+    <template if:true={spinner}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+</template>

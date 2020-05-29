@@ -1,0 +1,33 @@
+<!--
+  @File Name          : customerCard.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/19/2020, 4:45:42 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    2/2/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <lightning-card key={account.Id} onclick={cardClick}>
+        <div class="slds-p-horizontal_small">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <div class="slds-m-bottom_small slds-m-top_none">
+                        <!-- <lightning-avatar src="/bad/image/url.jpg" initials="" fallback-icon-name="standard:avatar"  alternative-text="Bob Wilson" class="slds-m-right_small" style="color: #faa14e"></lightning-avatar> -->
+                        <lightning-icon icon-name="action:user" alternative-text="User" size="small"
+                            style="background:rgb(39, 174, 230)"></lightning-icon>
+                    </div>
+                    <!-- <img class="imgTag" height="50px" width="50px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnG8uihgYatl6emhnkAyY-6POfHC_GKEF23q0Uy-m0bQIG48-s"> -->
+                </div>
+                    <div class="slds-media__body">
+                    <p>{name}</p>
+                        <!-- <p style="font-size: 20px;font-weight: 500;">{account.Name}</p> -->
+                        <p>{account.Phone}</p>
+                    </div>
+
+            </div>
+        </div>
+    </lightning-card>
+</template>

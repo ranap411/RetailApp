@@ -1,0 +1,43 @@
+<!--
+  @File Name          : tourVisit.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/29/2020, 3:23:52 AM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/21/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+<div class="slds-grid slds-wrap" style="height: 50px;padding-right: 12px;padding-top: 6px;background-color: black;">
+    <div class="slds-col slds-size_2-of-12" style="text-align: center;">
+        <lightning-icon icon-name="action:back" alternative-text="Approved" title="Approved" size="xx-small"
+            onclick={clickBack} style="background:rgb(39, 174, 230);"></lightning-icon>
+    </div>
+    <div class="slds-col slds-size_8-of-12" style="text-align: center;">
+        <span>
+
+        </span>
+    </div>
+    <div class="slds-col slds-size_2-of-12" style="text-align: end;">
+    </div>
+</div>
+    <div class="mainContainer">
+        <lightning-tabset>
+            <template for:each={beats} for:item="beat">
+                <lightning-tab key={beat.id} label={beat.Beat_Date__c}>
+                    <!-- <p style="text-align: center;"><b>{beat.beat}</b></p> -->
+                    <template for:each={beat.Events} for:item="visit">
+                        <div class="card visitCards" key={visit.id} onclick={clickBeat}>
+                            <div class="container">
+                                <h4><b>{visit.What.Name}</b></h4>
+                                <!-- <p>{visit.address}</p> -->
+                            </div>
+                        </div>
+                    </template>
+                </lightning-tab>
+            </template>
+        </lightning-tabset>
+    </div>
+</template>

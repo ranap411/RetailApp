@@ -1,0 +1,3 @@
+<apex:page showHeader="false">
+    <input id="picture_info" type="file" accept="image/*;capture=camera" capture="camera" onchange="" />
+</apex:page>

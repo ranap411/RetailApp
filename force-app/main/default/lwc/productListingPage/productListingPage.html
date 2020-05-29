@@ -1,0 +1,114 @@
+<template>
+    <div style="height: 600px;">
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-m-around_x-small">
+        <div class="slds-size_1-of-3">
+            <lightning-input
+                name="enter-search"
+                label="Search"
+                type="search"
+                onchange={handleSearch}
+            ></lightning-input>
+        </div>
+        <div class="slds-size_1-of-5 slds-p-left_xx-small">
+           <lightning-combobox
+            name="progress"
+            label="Brand"
+            value={value}
+            placeholder="Select Brand"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+        </div>
+        <div class="slds-size_1-of-5 slds-p-left_xx-small">
+            <lightning-combobox
+             name="progress"
+             label="Category 1"
+             value={value}
+             placeholder="Select Category 1"
+             options={options}
+             onchange={handleChange} ></lightning-combobox>
+         </div>
+         <div class="slds-size_1-of-5 slds-p-left_xx-small">
+            <lightning-combobox
+             name="progress"
+             label="Category 2"
+             value={value}
+             placeholder="Select Category 2"
+             options={options}
+             onchange={handleChange} ></lightning-combobox>
+         </div>
+
+    </div>
+    
+    <template if:true={productData} >
+
+        <div class="slds-m-around_x-small">
+         <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+              <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Opportunity Name">S.No</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Account Name">Name</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Close Date">Product Code</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Stage">Price</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Stage">Description</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Confidence">Action</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            <template for:each={productData} for:item="item">
+              <tr class="slds-hint-parent" key={item}>
+                <td data-label="Account Name">
+                  <div class="slds-truncate" title="Cloudhub">{item.sr}</div>
+                </td>
+                <td data-label="Name">
+                  <div class="slds-truncate" title="4/14/2015">{item.Name}</div>
+                </td>
+                <td data-label="Code">
+                  <div class="slds-truncate" title="Prospecting">{item.Code}</div>
+                </td>
+                <td data-label="Confidence">
+                  <div class="slds-truncate" title="20%">{item.Mrp}</div>
+                </td>
+                <td data-label="Description">
+                    <div class="slds-truncate" title="20%">{item.Description}</div>
+                </td>
+                <td data-label="Action">
+                    <lightning-button variant="brand" label="Select" title="Primary action" data-id={item.Id} onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                </td>
+              </tr>
+            </template>
+            </tbody>
+          </table>
+
+          <div class="slds-p-top_small">
+            <span>
+                <lightning-button-icon icon-name="utility:left" variant="bare" size="medium" alternative-text="Previous Page" onclick={previousPage}></lightning-button-icon>
+            </span>
+            <label class="slds-text-color_weak slds-p-horizontal_x-small" for="pageNum">Page:</label> 
+            <input type="number" id="pageNum" value={pageCounter} min="1" max={totalPage} maxlength="4" onkeypress={handlePageNumberChange} class="customInput" title="Go to a Page"></input>
+            <span>&nbsp;of&nbsp;<b id="totalPages">{totalPage}</b></span>
+            <span>
+                <lightning-button-icon icon-name="utility:right" variant="bare" size="medium" alternative-text="Next Page" onclick={nextPage} class="slds-p-horizontal_x-small"></lightning-button-icon>
+            </span>
+        </div>
+
+        </div>
+    </template>
+
+    <template if:false={productData}>
+
+    </template>
+    
+    </div>
+</template>

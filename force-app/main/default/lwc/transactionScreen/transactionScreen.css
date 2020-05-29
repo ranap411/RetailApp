@@ -1,0 +1,17 @@
+.orderDetails{
+    padding: 10px;
+}
+.header{
+    height: 25px;
+    background: #c5cac5;
+    text-align: center;
+    font-weight: 900;
+    padding: 4px;
+}
+.accountNameHeader{
+    background: #098f09;
+    height: 45px;
+    display: block;
+    font-weight: 900;
+    padding: 4px;
+}

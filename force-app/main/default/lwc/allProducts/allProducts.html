@@ -1,0 +1,48 @@
+<!--
+  @File Name          : allProducts.html
+  @Description        : 
+  @Author             : Saloni Jain
+  @Group              : 
+  @Last Modified By   : Saloni Jain
+  @Last Modified On   : 28/5/2020, 5:28:31 pm
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    19/5/2020   Saloni Jain     Initial Version
+-->
+<template>
+    <div class="container">
+        <!-- <div class="top">
+            <lightning-input type="Text" name="Search" placeholder="Search" style="width: 90%; float: left;">
+            </lightning-input>
+            <lightning-button-menu alternative-text="Toggle menu" style="width: 10%; float: right;">
+                <lightning-menu-item label="Menu Item 1" value={CategoryPicklistValues}>
+                </lightning-menu-item>
+            </lightning-button-menu>
+        </div> -->
+        <div class="bottom">
+            <template if:false={noResultFound}>
+                <template if:false={spinner}>
+                    <lightning-layout multiple-rows style="overflow-y: scroll; overflow: hidden; height: fit-content;">
+                        <template for:each={searchResult} for:item="products">
+                            <lightning-layout-item key={products.Id} size="12" small-device-size="6"
+                                medium-device-size="6" large-device-size="3" class="slds-p-around_x-small">
+                                <c-product-card productdata={products}></c-product-card>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </template>
+                <template if:true={spinner}>
+                    <c-spinner></c-spinner>
+                </template>
+                <!-- <a class="float" onclick={addProducts}>
+                    <span class="myFloat">
+                        <lightning-icon icon-name="action:new" onclick={addProductsIntoCart}></lightning-icon>
+                    </span>
+                </a> -->
+            </template>
+            <template if:true={noResultFound}>
+                <p style="text-align: center; margin:30px;">No Item Found</p>
+            </template>
+        </div>
+    </div>
+</template>

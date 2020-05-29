@@ -1,0 +1,88 @@
+<!--
+@File Name          : searchCustomer.html
+@Description        : 
+@Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+@Group              : 
+@Last Modified By   : Saloni Jain
+@Last Modified On   : 26/5/2020, 2:22:17 am
+@Modification Log   : 
+Ver       Date            Author      		    Modification
+1.0    2/2/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <div class="mainSearchCustomer">
+        <template if:true={showAccount}>
+            <div class="slds-grid slds-wrap"
+                style="height: 50px;padding-right: 12px;padding-top: 6px;background-color: black;">
+                <div class="slds-col slds-size_2-of-12" style="text-align: center;">
+                    <lightning-icon icon-name="action:back" alternative-text="Approved" title="Approved" size="xx-small"
+                        onclick={clickBack} style="background:rgb(39, 174, 230);"></lightning-icon>
+                </div>
+                <div class="slds-col slds-size_8-of-12" style="text-align: center;">
+                    <span>
+                    </span>
+                </div>
+                <div class="slds-col slds-size_2-of-12" style="text-align: end;">
+                </div>
+            </div>
+            <template if:false={newCustomer}>
+                <div class="slds-m-around_medium">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_12-of-12">
+                            <span class="">
+                                <!-- <input type="search" placeholder="Search" onchange={handleKeyChange} class="searchBar"  value={searchKey}></input> -->
+                                <!-- <input type="submit" value="New" class="newIcon" onclick={handleNewClick} style="background:#f05e23"/> -->
+
+                                <form>
+                                    <input type="text" name="focus" data-item="searchBar" required class="search-box"
+                                        placeholder="Search" onkeyup={handleKeyChange} />
+                                    <button class="close-icon" onclick={handleKeyChange} type="reset"></button>
+                                </form>
+                                <!-- <div class="search-wrapper">
+                        <form>
+                        <input type="text" name="focus" required class="search-box" placeholder="Enter search term" />
+                            <button class="close-icon" type="reset"></button>
+                        </form>
+                    </div> -->
+                            </span>
+                        </div>
+
+                        <span class="">
+                            <lightning-icon class="newIcon" icon-name="action:new" alternative-text="Approved"
+                                onclick={handleNewClick} size="x-small" style="background:rgb(39, 174, 230);">
+                            </lightning-icon>
+                            <!-- <input type="submit" value="New" class="newIcon" onclick={handleNewClick} style="background:#f05e23"/> -->
+                            <!--  <img class="newImg" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/add-circle-blue-512.png" onclick={handleNewClick}/>  -->
+                        </span>
+                    </div>
+                </div>
+
+                <template if:true={accounts}>
+                    <div class="customerCards">
+                        <!-- <lightning-layout  class="customerCards" multiple-rows="true"> -->
+                        <template for:each={accounts} for:item="account">
+                            <!-- <lightning-layout-item key={account.Id} size="12" small-device-size="6" medium-device-size="4" large-device-size="3" padding="around-small" class="layoutItem"> -->
+                            <c-customer-card key={account.Id} account={account} selectedval={selectedAcc}>
+                            </c-customer-card>
+                            <!-- </lightning-layout-item> -->
+                        </template>
+                        <!-- </lightning-layout> -->
+                    </div>
+                </template>
+                <template if:true={noResult}>
+                    <p style="color:white; text-align: center; font-size: large;">No Record Found for {searchKey}</p>
+                </template>
+                <template if:false={accounts}>
+                    <c-spinner></c-spinner>
+                </template>
+            </template>
+            <template if:true={newCustomer}>
+                <c-new-customer></c-new-customer>
+            </template>
+        </template>
+
+        <template if:true={showTabs}>
+            <c-tab-screen acc-id={accId}></c-tab-screen>
+        </template>
+    </div>
+</template>

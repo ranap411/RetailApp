@@ -1,0 +1,73 @@
+<!--
+  @File Name          : cart.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/27/2020, 1:36:43 AM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    2/21/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+   <div class="mainContainer">
+       <div class="checkBox">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_6-of-12">
+                    <span>
+                        <lightning-input type="checkbox" label="On Location">
+                        </lightning-input>
+                    </span>
+                </div>
+                <div class="slds-col slds-size_6-of-12" style="text-align: end;">
+                    <span>
+                        <!-- <button class="slds-button slds-button_outline-brand" onclick={createSalesOrder}>Next</button> -->
+                    </span>
+                </div>
+            </div>
+          
+       </div>
+       <div class="productDetailsHeader">
+            <p>All prices and discounts are inclusive of GST *</p>
+       </div>
+       <div class="productDetailsBody"> 
+            <p>Total Amount: {totalAmount}</p>
+            <p>Total Unit: {totalUnit}</p>
+       </div>
+       <div class="orderDetails">
+            <p style="font-weight: 900;font-size: medium;">Order</p>
+            <div class="slds-grid slds-wrap" style="padding-top: 5px;">
+                <div class="slds-col slds-size_4-of-12">
+                    <span>SKU</span>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <span>Unit Price</span>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <span>Unit</span>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <span>Amount</span>
+                </div>
+            </div>
+            <template for:each={orders} for:item="order">
+                <div class="card visitCards" key={order.id}>
+                    <div class="slds-grid slds-wrap" style="padding-top: 5px;padding-bottom: 5px; border-bottom: .5px solid gray;">
+                        <div class="slds-col slds-size_4-of-12">
+                            <span>{order.Name}</span>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12">
+                            <span>{order.UnitPrice}</span>
+                        </div>
+                        <div class="slds-col slds-size_2-of-12">
+                            <span>{order.Unit}</span>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12">
+                            <span>{order.Amount}</span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+       </div>
+   </div>
+</template>

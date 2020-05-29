@@ -1,0 +1,78 @@
+<!--
+  @File Name          : tabScreen.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : Saloni Jain
+  @Last Modified On   : 28/5/2020, 5:18:29 pm
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/19/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <div class="slds-grid slds-wrap" style="height: 50px;padding-right: 10px; background-color: black;">
+        <div class="slds-col slds-size_2-of-12" style="text-align: center;">
+            <lightning-icon icon-name="action:back" alternative-text="Approved" title="Approved" size="xx-small"
+                onclick={clickBack} style="background:rgb(39, 174, 230); margin-top: 12px;"></lightning-icon>
+        </div>
+        <div class="slds-col slds-size_7-of-12" style="text-align: center;">
+            <template if:true={searchbar}>
+                <span>
+                    <!-- <lightning-input type="Text" name="Search" placeholder="Search" style="width: 94%;" ></lightning-input> -->
+                    <input type="text" class="text-line" placeholder="Search" onkeyup={handlesearch} />
+                </span>
+            </template>
+        </div>
+        <div class="slds-col slds-size_3-of-12"
+            style="text-align: center; color: white; margin-top: 12px; font-size: x-small; padding: 2px;">
+            <center><span>
+                    <template if:false={isCheckIn}>
+                        <div>
+                            <p style="background-color: rgb(39, 174, 230); padding: 6px; border-radius: 5px;"
+                                onclick={handleCheckIn}>Check - In</p>
+                        </div>
+                    </template>
+                    <template if:true={CheckOut}>
+                        <div>
+                            <p style="background-color: rgb(196, 8, 8); padding: 6px; border-radius: 5px;"
+                                onclick={handleCheckOut}>Check - Out</p>
+                        </div>
+                    </template>
+                </span></center>
+        </div>
+    </div>
+    <!-- When no Check-In -->
+    <template if:false={isCheckIn}>
+        <lightning-tabset active-tab-value={name}>
+            <lightning-tab label="Info" onactive={tabselect}>
+                <c-customer-detail recordid={accId}></c-customer-detail>
+            </lightning-tab>
+        </lightning-tabset>
+    </template>
+    <template if:true={isCheckIn}>
+        <!-- When Checked - In -->
+        <lightning-tabset active-tab-value={name}>
+            <lightning-tab label="Info" onactive={tabselect}>
+                <c-customer-detail recordid={accId}></c-customer-detail>
+            </lightning-tab>
+            <lightning-tab label="Orders" onactive={tabselect}>
+                <c-all-products accountid={accId}></c-all-products>
+            </lightning-tab>
+            <lightning-tab label="Cart" onactive={tabselect}>
+                <c-cart account-id={accId}></c-cart>
+            </lightning-tab>
+            <lightning-tab label="Sale Return" onactive={tabselect}>
+                <c-sale-return></c-sale-return>
+            </lightning-tab>
+            <!-- <lightning-tab label="Previous Orders" onactive={tabselect}>
+            <c-previous-orders accountid={accId}></c-previous-orders>
+         </lightning-tab> -->
+            <lightning-tab label="Transaction" onactive={tabselect}>
+                <c-transaction-screen></c-transaction-screen>
+            </lightning-tab>
+            <!-- <lightning-tab label="Item One" onactive={tabselect}>
+            One Content !
+        </lightning-tab> -->
+        </lightning-tabset>
+    </template>
+</template>
