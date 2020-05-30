@@ -21,6 +21,7 @@ public static List<Map<String, object>> getProduct(){
         tempMap.put('ProductCode',pl.Product_Code__c);
         tempMap.put('ProductName',pl.Name);
         myMap.add(tempMap);
+        System.debug('check');
     }
     //   System.debug(myMap.get('1223')); 
     // System.debug('map' + myMap);
